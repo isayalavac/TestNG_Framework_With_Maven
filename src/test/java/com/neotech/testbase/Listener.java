@@ -4,6 +4,8 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
+import com.neotech.utils.CommonMethods;
+
 public class Listener implements ITestListener {
 
 	public void onStart(ITestContext context) {
@@ -34,7 +36,8 @@ public class Listener implements ITestListener {
 		// print test passed on the report
 		BaseClass.test.pass("Test Pessed: " + result.getName());
 		
-		
+		// get screenshot and add it on the report
+		BaseClass.test.addScreenCaptureFromPath(CommonMethods.takeScreenShot("passed/" + result.getName()));
 	}
 
 	public void onTestFailure(ITestResult result) {
@@ -43,6 +46,9 @@ public class Listener implements ITestListener {
 		
 		// print test failed on the report
 		BaseClass.test.fail("Test Failed: " + result.getName());
+		
+		// get screenshot and add it on the report
+		BaseClass.test.addScreenCaptureFromPath(CommonMethods.takeScreenShot("failed/" + result.getName()));
 	}
 
 
