@@ -5,8 +5,10 @@
     <classes>
       <class name="com.neotech.testcases.LoginTests">
         <methods>
+          <include name="generateReport"/>
           <include name="tearDown"/>
           <include name="setUp"/>
+          <include name="writeReport"/>
           <include name="invalidPasswordLogin"/>
         </methods>
       </class> <!-- com.neotech.testcases.LoginTests -->

@@ -2,13 +2,14 @@ package com.neotech.utils;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchFrameException;
@@ -311,19 +312,28 @@ public class CommonMethods  extends BaseClass{
 		}
 	}
 	
-	public static void takeScreenShot(String fileName) {
+	public static String  takeScreenShot(String fileName) {
 		TakesScreenshot ts = (TakesScreenshot) driver;
 		File source = ts.getScreenshotAs(OutputType.FILE);
-		File destination = new File("screenShots/" + fileName + ".png");
+		
+		String destination = Constants.SCREENSHOT_FILEPATH + fileName + getTimeStamp() + ".png";
+//		File destination = new File("screenShots/" + fileName + ".png");
 		try {
-			FileUtils.copyFile(source, destination);	
+			FileUtils.copyFile(source, new File(destination));	
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.out.println("Did NOT take a screenshot!!!");
 		}
 		
+		return destination;
 	}
 	
+	public static String getTimeStamp() {
+		
+		Date date = new Date();
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyy_MM_dd+HH_mm_ss");
+	}
 	
 	
 	

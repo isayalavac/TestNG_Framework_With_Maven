@@ -7,6 +7,8 @@ public class Constants {
 	
 	public static final String REPORT_FILEPATH = System.getProperty("user.dir") + "/target/html/-report/HRMS.html";
 	
+	public static final String SCREENSHOT_FILEPATH = System.getProperty("user.dir") + "/screenshot/";
+	
 	
 	public static final int IMPLICIT_WAIT_TIME = 15;
 
