@@ -332,7 +332,7 @@ public class CommonMethods  extends BaseClass{
 		
 		Date date = new Date();
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyy_MM_dd+HH_mm_ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyy_MM_dd_HH_mm_ss");
 		
 		return sdf.format(date);
 	}

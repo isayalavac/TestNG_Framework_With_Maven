@@ -14,6 +14,8 @@ public class LoginTests extends CommonMethods{
 	public void validLogin() {
 		LoginPageElements login = new LoginPageElements();
 		DashboardPageElements dashboard = new DashboardPageElements();
+		
+		test.info("Entering valid login credentials");
 
 		// send username
 		sendText(login.username, ConfigsReader.getProperty("username"));
@@ -25,6 +27,8 @@ public class LoginTests extends CommonMethods{
 		// you can use jsClick() as well
 		click(login.logInButton);
 		wait(2);
+		
+		test.info("Verifying that user is logged in.");
 
 		// verify username
 		String expected = "Jacqueline White";
@@ -66,7 +70,7 @@ public class LoginTests extends CommonMethods{
 		wait(1);
 
 		// Failing on purpose
-		String expectedText = "Invalid Credentials - bla bla bla";
+		String expectedText = "Invalid Credentials";
 		String actualText = login.invalidMsg.getText();
 
 		Assert.assertEquals(actualText, expectedText, "Error message does NOT match!");
